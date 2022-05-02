@@ -64,6 +64,7 @@ setup(
     install_requires=[
         "texttable",
         "argparse",
+        "argcomplete",
 
     ],
 
