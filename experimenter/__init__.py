@@ -16,12 +16,13 @@ class Options:
 
 class Experiment(abc.ABC):
 
-    def __init__(self, base_folderpath:Path):
+    def __init__(self, base_folderpath:Path,verbose=True):
         self.base_folderpath = base_folderpath
         self.folderpath= base_folderpath / self.id()
         self.folderpath.mkdir(exist_ok=True, parents=True)
         with open(self.folderpath / "description.txt", "w") as f:
             f.write(self.description())
+        self.verbose=verbose
 
     def id(self):
         return self.__class__.__name__
@@ -37,11 +38,12 @@ class Experiment(abc.ABC):
             print(f"[{dt_started_string}] {stars} Running experiment {self.id()}  {stars}")
             self.run()
 
-            # time elapsed and finished
-            dt_finished = datetime.now()
-            dt_finished_string = dt_finished.strftime(strf_format)
-            elapsed = dt_finished - dt_started
-            print(f"[{dt_finished_string}] {stars} Finished experiment {self.id()}  ({elapsed} elapsed) {stars}")
+            if self.verbose:
+                # time elapsed and finished
+                dt_finished = datetime.now()
+                dt_finished_string = dt_finished.strftime(strf_format)
+                elapsed = dt_finished - dt_started
+                print(f"[{dt_finished_string}] {stars} Finished experiment {self.id()}  ({elapsed} elapsed) {stars}")
             self.mark_as_finished()
         else:
             print(f"[{dt_started_string}] {stars}Experiment {self.id()} already finished, skipping. {stars}")
