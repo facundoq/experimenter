@@ -1,10 +1,8 @@
-name: Build and upload Python Package to PyPI when a tag is created
+name: Build and upload Python Package to PyPI when a tag is push that starts with 'v'
 on: 
     push:
         tags: 
-            - v* 
-        # - 'v[0-9]+.[0-9]+.[0-9]+'
-
+            - 'v*'
 jobs:
     build:
         name: Build distribution 📦
