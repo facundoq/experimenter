@@ -9,6 +9,8 @@ dependencies = [
     "argcomplete"
 ]
 
+# if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+
 [project.urls]
 Homepage = "https://github.com/facundoq/experimenter"
 Documentation = "https://github.com/facundoq/experimenter"
