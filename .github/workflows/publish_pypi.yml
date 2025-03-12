@@ -1,4 +1,10 @@
+
 # .github/workflows/ci-cd.yml
+
+name: Upload Python Package to PyPI when a Release is Created
+
+on: push
+
 jobs:
     pypi-publish:
         name: Upload release to PyPI
@@ -10,8 +16,6 @@ jobs:
         permissions:
             # IMPORTANT: this permission is mandatory for trusted publishing
             id-token: write  
-        steps:
-        # retrieve your distributions here      
-            - name: Publish package distributions to PyPI
-            uses: pypa/gh-action-pypi-publish@release/v1
-        
+        steps: # retrieve your distributions here      
+            - name: Publish package distributions to PyPI 
+              uses: pypa/gh-action-pypi-publish@release/v1
