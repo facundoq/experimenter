@@ -1,7 +1,7 @@
 [project]
 name = "experimenter"
 version = "0.2"
-description = "Invariance, Same-Equivariance and other measures for Neural Networks. Support for PyTorch (now) and TensorFlow (coming)."
+description = "Lightweight experiment base class, to organize machine learning research projects."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
